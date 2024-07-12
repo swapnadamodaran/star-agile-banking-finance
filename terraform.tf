@@ -14,7 +14,7 @@ resource "aws_vpc" "sdvpc" {
 # Create Subnet
 resource "aws_subnet" "sdsubnet" {
   vpc_id     = aws_vpc.sdvpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = "10.0.1.0/24"
   tags = {
     Name = "sdsubnet"
   }
@@ -96,7 +96,7 @@ resource "aws_security_group" "sdsg" {
 # Creating a new network interface
 resource "aws_network_interface" "ni" {
  subnet_id = aws_subnet.sdsubnet.id
- private_ips = ["10.0.2.10"]
+ private_ips = ["10.0.1.10"]
  security_groups = [aws_security_group.sdsg.id]
 }
 
@@ -104,13 +104,13 @@ resource "aws_network_interface" "ni" {
 resource "aws_eip" "eip" {
  vpc = true
  network_interface = aws_network_interface.ni.id
- associate_with_private_ip = "10.0.2.10"
+ associate_with_private_ip = "10.0.1.10"
 }
 
 
 
 # Create Instance
-resource "aws_instance" "test-server" {
+resource "aws_instance" "testserver" {
   ami           = "ami-04b70fa74e45c3917"
   instance_type = "t2.micro"
   key_name = "valid"
@@ -124,7 +124,6 @@ user_data  = <<-EOF
 EOF
 
 tags = {
-    Name = "Test-server"
+    Name = "Test_server"
   }
 }
-
