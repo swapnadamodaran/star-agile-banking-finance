@@ -135,8 +135,4 @@ network_interface {
     Name = "Test_server"
   }
 }
- user_data  = <<-EOF
- #!/bin/bash
-     sudo apt-get update -y
-  EOF
- }
+}
