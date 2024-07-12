@@ -131,7 +131,12 @@ network_interface {
  device_index = 0
  network_interface_id = aws_network_interface.ni.id
  }
-  tags = {
+user_data  = <<-EOF
+ #!/bin/bash
+     sudo apt-get update -y
+EOF
+
+tags = {
     Name = "Test_server"
   }
 }
