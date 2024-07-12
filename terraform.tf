@@ -126,7 +126,7 @@ resource "aws_instance" "testserver" {
   associate_public_ip_address = true
   subnet_id = aws_subnet.sdsubnet.id
   vpc_security_group_ids = [aws_security_group.sdsg.id]
-  key_name = "fujitsu"
+  key_name = "valid"
 network_interface {
  device_index = 0
  network_interface_id = aws_network_interface.ni.id
@@ -138,5 +138,5 @@ network_interface {
  user_data  = <<-EOF
  #!/bin/bash
      sudo apt-get update -y
-      EOF
+  EOF
  }
