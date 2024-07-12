@@ -113,8 +113,6 @@ resource "aws_eip" "eip" {
 resource "aws_instance" "testserver" {
   ami           = "ami-04b70fa74e45c3917"
   instance_type = "t2.micro"
-  subnet_id = aws_subnet.sdsubnet.id
-  vpc_security_group_ids = [aws_security_group.sdsg.id]
   key_name = "valid"
 network_interface {
  device_index = 0
